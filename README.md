@@ -8,6 +8,6 @@ Notes :
 
 ```
 // Voici comment on construit un tableau (102bis)
-char tab\[n];
+char tab[n];
 ```
 
