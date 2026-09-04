@@ -6,7 +6,7 @@ __________
 Un jeu uniquement en console.\
 Une seule partie fonctionnant sur une boucle infinie.\
 La grille du memory est en 4x4.\
-Les cartes seront codées en durs dans le fichier (l'aléatoire n'ayant pas été abordée dans le chapitre 1).
+Les cartes seront codées en dur dans le fichier (l'aléatoire n'ayant pas été abordé dans le chapitre 1).
 __________
 
 *Notions révisées :*
