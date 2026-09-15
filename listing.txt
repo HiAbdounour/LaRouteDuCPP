@@ -1,0 +1,9 @@
+Sujet,Nom,Notions abordées,Notes
+101,Gestionnaire de banque version simple,Types numériques:Définition de fonctions simples:Conditions:Boucle ``do … while```:Variables globales,
+102,Calculatrice simple en console,Fonctions simples:Input et output en console,failed
+102b,Sauvegarde de touches,Tableaux:Définition par input:Input et output en console:Boucle ``while``:String,remake du 102
+103,Calcul d'IMC,Flottants:Prémices du ``std``,approximation flottante
+104,Suite de Fibonacci simple,Boucle ``for``:Variables mouvantes,
+105,Pierre Feuille Ciseaux (adversaire prévisible),Comparaisons intelligentes:Tableaux:Boucle infinie,
+106,Devine le nombre,Tableaux:Variable globale:Boucle infinie:Comparaisons de nombres,pas d'aléatoire
+PROJ1,Memory en console,Tableaux:Input et output en console:Boucle infinie:Boucle ``while``:Fonctions simples:Tableaux:String,
