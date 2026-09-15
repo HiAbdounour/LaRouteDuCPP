@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Route du C++ - web support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1em;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .results-info {
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.95em;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e9ecef;
+            color: #555;
+        }
+
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .snippet-id {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9em;
+            min-width: 60px;
+        }
+
+        .snippet-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .concepts {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .concept-tag {
+            display: inline-block;
+            background: #e7f0ff;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin: 4px 4px 4px 0;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .notes {
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+        }
+
+        .empty-state {
+            padding: 60px 20px;
+            text-align: center;
+            color: #999;
+        }
+
+        .empty-state h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .error-message {
+            padding: 20px;
+            background: #ffe0e0;
+            color: #c00;
+            text-align: center;
+            border-bottom: 1px solid #ffcccc;
+        }
+
+        footer {
+            padding: 20px;
+            background: #f8f9fa;
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .concept-tag {
+                display: block;
+                margin: 4px 0;
+            }
+
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>La Route du C++ - web support</h1>
+            <p>Retrouvez facilement tous les épisodes de la Route du C++ ! En particulier, recherchez une notion facilement.</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <label for="search-input">🔍 Search by name or concepts:</label>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="e.g., Memory, Boucle, Fibonacci..."
+                    autocomplete="off"
+                >
+            </div>
+        </div>
+
+        <div class="results-info">
+            <span id="results-count">Loading...</span>
+        </div>
+
+        <div id="error-container"></div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nom</th>
+                        <th>Notions abordées</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="snippets-table">
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 40px;">Loading snippets...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="empty-state" class="empty-state" style="display: none;">
+            <h2>No snippets found</h2>
+            <p>Try adjusting your search terms</p>
+        </div>
+
+        <footer>
+            <p>Made with ☕ for learning C++</p>
+        </footer>
+    </div>
+
+    <script>
+        let snippetsData = [];
+
+        const searchInput = document.getElementById('search-input');
+        const snippetsTable = document.getElementById('snippets-table');
+        const resultsCount = document.getElementById('results-count');
+        const emptyState = document.getElementById('empty-state');
+        const errorContainer = document.getElementById('error-container');
+
+        // Load JSON data
+        async function loadSnippets() {
+            try {
+                const response = await fetch('snippets.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                snippetsData = await response.json();
+                displaySnippets(snippetsData);
+                searchInput.disabled = false;
+            } catch (error) {
+                console.error('Error loading snippets:', error);
+                errorContainer.innerHTML = '<div class="error-message">❌ Error loading snippets. Make sure snippets.json is in the same directory as index.html</div>';
+                snippetsTable.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 40px; color: #999;">Failed to load data</td></tr>';
+            }
+        }
+
+        // Normalize text for search (remove accents, lowercase)
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // Filter snippets based on search input
+        function filterSnippets() {
+            const searchTerm = normalizeText(searchInput.value);
+            
+            if (!searchTerm) {
+                displaySnippets(snippetsData);
+                return;
+            }
+
+            const filtered = snippetsData.filter(snippet => {
+                const nameMatch = normalizeText(snippet.name).includes(searchTerm);
+                const conceptsMatch = normalizeText(snippet.concepts).includes(searchTerm);
+                return nameMatch || conceptsMatch;
+            });
+
+            displaySnippets(filtered);
+        }
+
+        // Display snippets in the table
+        function displaySnippets(snippets) {
+            if (snippets.length === 0) {
+                snippetsTable.innerHTML = '';
+                emptyState.style.display = 'block';
+                resultsCount.textContent = 'No results found';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            resultsCount.textContent = `Showing ${snippets.length} snippet${snippets.length !== 1 ? 's' : ''}`;
+
+            snippetsTable.innerHTML = snippets.map(snippet => `
+                <tr>
+                    <td class="snippet-id">${escapeHtml(snippet.id)}</td>
+                    <td class="snippet-name">${escapeHtml(snippet.name)}</td>
+                    <td class="concepts">
+                        ${snippet.concepts
+                            .split(',')
+                            .map(concept => `<span class="concept-tag">${escapeHtml(concept.trim())}</span>`)
+                            .join('')}
+                    </td>
+                    <td class="notes">${snippet.notes ? escapeHtml(snippet.notes) : '—'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Event listener for search input
+        searchInput.addEventListener('input', filterSnippets);
+        searchInput.disabled = true;
+
+        // Load snippets on page load
+        loadSnippets();
+    </script>
+</body>
+</html>
