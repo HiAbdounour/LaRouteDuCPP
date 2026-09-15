@@ -1,0 +1,10 @@
+[
+    { "id": "101", "name": "Gestionnaire de banque version simple", "concepts": "Types numériques, Définition de fonctions simples, Conditions, Boucle do … while, Variables globales", "notes": "" },
+    { "id": "102", "name": "Calculatrice simple en console", "concepts": "Fonctions simples, Input et output en console", "notes": "failed" },
+    { "id": "102b", "name": "Sauvegarde de touches", "concepts": "Tableaux, Définition par input, Input et output en console, Boucle while, String", "notes": "remake du 102" },
+    { "id": "103", "name": "Calcul d'IMC", "concepts": "Flottants, Prémices du std", "notes": "approximation flottante" },
+    { "id": "104", "name": "Suite de Fibonacci simple", "concepts": "Boucle for, Variables mouvantes", "notes": "" },
+    { "id": "105", "name": "Pierre Feuille Ciseaux (adversaire prévisible)", "concepts": "Comparaisons intelligentes, Tableaux, Boucle infinie", "notes": "" },
+    { "id": "106", "name": "Devine le nombre", "concepts": "Tableaux, Variable globale, Boucle infinie, Comparaisons de nombres", "notes": "pas d'aléatoire" },
+    { "id": "PROJ1", "name": "Memory en console", "concepts": "Tableaux, Input et output en console, Boucle infinie, Boucle while, Fonctions simples, String", "notes": "" }
+]
