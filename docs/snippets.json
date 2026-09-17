@@ -6,5 +6,7 @@
     { "id": "104", "name": "Suite de Fibonacci simple", "concepts": "Boucle for, Variables mouvantes", "notes": "" },
     { "id": "105", "name": "Pierre Feuille Ciseaux (adversaire prévisible)", "concepts": "Comparaisons intelligentes, Tableaux, Boucle infinie", "notes": "" },
     { "id": "106", "name": "Devine le nombre", "concepts": "Tableaux, Variable globale, Boucle infinie, Comparaisons de nombres", "notes": "pas d'aléatoire" },
-    { "id": "PROJ1", "name": "Memory en console", "concepts": "Tableaux, Input et output en console, Boucle infinie, Boucle while, Fonctions simples, String", "notes": "" }
+    { "id": "PROJ1", "name": "Memory en console", "concepts": "Tableaux, Input et output en console, Boucle infinie, Boucle while, Fonctions simples, String", "notes": "" },
+    { "id": "201", "name": "Caractères uniques dans une chaîne", "concepts": "Vecteurs", "notes": ""},
+    { "id": "202", "name": "Découverte de l'espace en input", "concepts": "Inputs spéciaux en console", "notes": ""}
 ]
